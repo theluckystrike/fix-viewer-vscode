@@ -1,0 +1,312 @@
+{
+  "name": "zovo-fix-viewer",
+  "displayName": "FIX Protocol Viewer",
+  "description": "Open FIX 4.2, 4.4 and 5.0 trading message files (.fix) in VS Code: decoded tags, sessions and order states, read locally with nothing to install.",
+  "version": "0.1.0",
+  "publisher": "zovo",
+  "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1B1F2A",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theluckystrike/fix-viewer-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/theluckystrike/fix-viewer-vscode/issues"
+  },
+  "homepage": "https://github.com/theluckystrike/fix-viewer-vscode#readme",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other",
+    "Data Science"
+  ],
+  "keywords": [
+    "fix",
+    "fix protocol",
+    "trading",
+    "financial",
+    "order routing"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onUri",
+    "onCustomEditor:zovo-fix.viewer"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": true
+  },
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "zovo-fix.viewer",
+        "displayName": "FIX Protocol Viewer",
+        "selector": [
+          {
+            "filenamePattern": "*.{fix,FIX,fixlog,FIXLOG}"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "commands": [
+      {
+        "command": "zovoFix.openWith",
+        "title": "Open in FIX Protocol Viewer",
+        "category": "FIX Viewer",
+        "icon": "$(table)"
+      },
+      {
+        "command": "zovoFix.openSample",
+        "title": "Open the Sample FIX File",
+        "category": "FIX Viewer"
+      },
+      {
+        "command": "zovoFix.openWalkthrough",
+        "title": "Get Started",
+        "category": "FIX Viewer"
+      },
+      {
+        "command": "zovoFix.moreViewers",
+        "title": "More free tools by Zovo",
+        "category": "FIX Viewer"
+      },
+      {
+        "command": "zovoFix.supportDeveloper",
+        "title": "Support the developer",
+        "category": "FIX Viewer"
+      },
+      {
+        "command": "zovoFix.auditSession",
+        "title": "Audit FIX session sequence gaps and checksums (Pro, 1 free try)",
+        "category": "FIX Viewer"
+      },
+      {
+        "command": "zovoFix.exportCsvJson",
+        "title": "Export decoded FIX messages to CSV and JSON (Pro, 1 free try)",
+        "category": "FIX Viewer"
+      },
+      {
+        "command": "zovoFix.diffOrderLifecycle",
+        "title": "Compare order lifecycle across two FIX files (Pro, 1 free try)",
+        "category": "FIX Viewer"
+      },
+      {
+        "command": "zovoFix.zovoPro.auditSession",
+        "title": "Zovo Pro: Audit FIX session sequence gaps and checksums"
+      },
+      {
+        "command": "zovoFix.zovoPro.exportCsvJson",
+        "title": "Zovo Pro: Export decoded FIX messages to CSV and JSON"
+      },
+      {
+        "command": "zovoFix.zovoPro.diffOrderLifecycle",
+        "title": "Zovo Pro: Compare order lifecycle across two FIX files"
+      },
+      {
+        "command": "zovoFix.zovoTitle.auditSession",
+        "title": "Zovo Pro: Audit FIX session sequence gaps and checksums"
+      },
+      {
+        "command": "zovoFix.zovoTitle.exportCsvJson",
+        "title": "Zovo Pro: Export decoded FIX messages to CSV and JSON"
+      },
+      {
+        "command": "zovoFix.zovoTitle.diffOrderLifecycle",
+        "title": "Zovo Pro: Compare order lifecycle across two FIX files"
+      },
+      {
+        "command": "zovoFix.getPro",
+        "title": "Get Zovo Pro (USD 19 once, all Zovo extensions)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoFix.payWithPayPal",
+        "title": "Pay for Zovo Pro with PayPal (USD 19, team of 5 USD 59)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoFix.unlockWithSponsors",
+        "title": "I already paid: activate with GitHub Sponsors",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoFix.enterLicenseKey",
+        "title": "Enter Zovo Pro license key",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoFix.removeLicense",
+        "title": "Remove Zovo Pro from this editor",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoFix.payByCard",
+        "title": "Pay for Zovo Pro by card (USD 19)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoFix.enterKey",
+        "title": "Enter a key",
+        "category": "Zovo Pro"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "zovoFix.zovoTitle.auditSession",
+          "when": "activeCustomEditorId == 'zovo-fix.viewer' && config.zovoFix.showProTools",
+          "group": "zovoPro@1"
+        },
+        {
+          "command": "zovoFix.zovoTitle.exportCsvJson",
+          "when": "activeCustomEditorId == 'zovo-fix.viewer' && config.zovoFix.showProTools",
+          "group": "zovoPro@2"
+        },
+        {
+          "command": "zovoFix.zovoTitle.diffOrderLifecycle",
+          "when": "activeCustomEditorId == 'zovo-fix.viewer' && config.zovoFix.showProTools",
+          "group": "zovoPro@3"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "zovoFix.openWith",
+          "when": "resourceFilename =~ /\\.(fix|fixlog)$/i && !explorerResourceIsFolder",
+          "group": "navigation@9"
+        },
+        {
+          "command": "zovoFix.zovoPro.auditSession",
+          "when": "resourceFilename =~ /\\.(fix|fixlog)$/i && !explorerResourceIsFolder && config.zovoFix.showProTools",
+          "group": "zovoPro@1"
+        },
+        {
+          "command": "zovoFix.zovoPro.exportCsvJson",
+          "when": "resourceFilename =~ /\\.(fix|fixlog)$/i && !explorerResourceIsFolder && config.zovoFix.showProTools",
+          "group": "zovoPro@2"
+        },
+        {
+          "command": "zovoFix.zovoPro.diffOrderLifecycle",
+          "when": "resourceFilename =~ /\\.(fix|fixlog)$/i && !explorerResourceIsFolder && config.zovoFix.showProTools",
+          "group": "zovoPro@3"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "zovoFix.auditSession",
+          "when": "config.zovoFix.showProTools"
+        },
+        {
+          "command": "zovoFix.exportCsvJson",
+          "when": "config.zovoFix.showProTools"
+        },
+        {
+          "command": "zovoFix.diffOrderLifecycle",
+          "when": "config.zovoFix.showProTools"
+        },
+        {
+          "command": "zovoFix.zovoPro.auditSession",
+          "when": "false"
+        },
+        {
+          "command": "zovoFix.zovoPro.exportCsvJson",
+          "when": "false"
+        },
+        {
+          "command": "zovoFix.zovoPro.diffOrderLifecycle",
+          "when": "false"
+        },
+        {
+          "command": "zovoFix.zovoTitle.auditSession",
+          "when": "false"
+        },
+        {
+          "command": "zovoFix.zovoTitle.exportCsvJson",
+          "when": "false"
+        },
+        {
+          "command": "zovoFix.zovoTitle.diffOrderLifecycle",
+          "when": "false"
+        },
+        {
+          "command": "zovoFix.openWith",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "FIX Protocol Viewer",
+      "properties": {
+        "zovoFix.maxFileMB": {
+          "type": "number",
+          "default": 50,
+          "minimum": 1,
+          "maximum": 512,
+          "description": "Files up to this size open in the FIX viewer."
+        },
+        "zovoFix.pageSize": {
+          "type": "number",
+          "default": 100,
+          "minimum": 20,
+          "maximum": 500,
+          "description": "Rows shown on one page of the message table."
+        },
+        "zovoFix.showProTools": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the Zovo Pro tools (session audit, CSV/JSON export and order lifecycle diff) in the Command Palette, the Explorer menu, the editor title menu and the viewer toolbar. Everything free stays visible."
+        },
+        "zovoFix.askForRating": {
+          "type": "boolean",
+          "default": true,
+          "description": "Ask once for a Marketplace rating after 3 FIX files open without an error on 2 different days. Choosing No thanks never asks again. Nothing is sent anywhere."
+        },
+        "zovoFix.showSupportLinks": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the small Rate, More free tools and Zovo Pro links at the bottom of the viewer. Nothing is sent anywhere."
+        },
+        "zovo.fix.trial.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the 7-day Zovo Pro trial button in the Pro panel."
+        }
+      }
+    },
+    "walkthroughs": [
+      {
+        "id": "zovoFix.start",
+        "title": "Get started with the FIX Protocol Viewer",
+        "description": "Read FIX 4.2, 4.4 and 5.0 trading messages, decoded tags and session sequence checks in VS Code, locally.",
+        "steps": [
+          {
+            "id": "open",
+            "title": "Open a FIX file",
+            "description": "Click any .fix or .fixlog file in the Explorer to view decoded messages, tags, sessions and checksum checks.\n[Open the sample FIX file](command:zovoFix.openSample)",
+            "media": {
+              "image": "images/screenshot.png",
+              "altText": "A FIX file open in the viewer with message table, decoded tags, session list and checksum findings."
+            },
+            "completionEvents": [
+              "onCommand:zovoFix.openSample"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "test": "node scripts/test.js",
+    "package": "npx -y @vscode/vsce@3 package --no-dependencies"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/theluckystrike/sponsorships?tier_id=679878"
+  }
+}
